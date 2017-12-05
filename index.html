@@ -6,6 +6,7 @@
 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
 
 <div class="container">
 
@@ -17,7 +18,7 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
     <br>
 
     <textarea id="message" type="form-control" placeholder="Message"></textarea>
-    
+
     <br>
     <button id="send" class="btn btn-success">Send Message</button>
   </div>
@@ -32,6 +33,10 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
 </div>
 
 <script>
+
+  var socket = io()
+
+  
   $(() => {
     console.log("page load")
     $("#send").click(() => {
@@ -40,7 +45,7 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
       postMessages(message)
     })
     getMessages()
-  })  
+  })
 
   function addMessages(message){
 
